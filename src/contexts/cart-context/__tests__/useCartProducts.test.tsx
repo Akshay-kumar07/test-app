@@ -152,5 +152,28 @@ describe('[contexts] - cart-context', () => {
         expect(mockUpdateCartTotal).toHaveBeenNthCalledWith(1, products);
       });
     });
+
+    describe('clearCart', () => {
+      afterEach(() => {
+        resetMocks();
+      });
+
+      test('should remove all products from cart', () => {
+        setupMockUseContext([...mockCartProducts]);
+
+        const mockUpdateCartTotal = jest.fn();
+        useCartTotalModule.default = jest.fn().mockImplementation(() => ({
+          total: {},
+          updateCartTotal: mockUpdateCartTotal,
+        }));
+
+        const { result } = renderHook(() => useCartProducts(), { wrapper });
+
+        expect(products).toHaveLength(mockCartProducts.length);
+        result.current.clearCart();
+        expect(products).toHaveLength(0);
+        expect(mockUpdateCartTotal).toHaveBeenNthCalledWith(1, products);
+      });
+    });
   });
 });

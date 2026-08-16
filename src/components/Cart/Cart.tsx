@@ -6,7 +6,8 @@ import { useCart } from 'contexts/cart-context';
 import * as S from './style';
 
 const Cart = () => {
-  const { products, total, isOpen, openCart, closeCart } = useCart();
+  const { products, total, isOpen, openCart, closeCart, clearCart } =
+    useCart();
 
   const handleCheckout = () => {
     if (total.productQuantity) {
@@ -48,6 +49,12 @@ const Cart = () => {
           </S.CartContentHeader>
 
           <CartProducts products={products} />
+
+          {products.length > 0 && (
+            <S.ClearCartButton onClick={clearCart}>
+              Clear Cart
+            </S.ClearCartButton>
+          )}
 
           <S.CartFooter>
             <S.Sub>SUBTOTAL</S.Sub>

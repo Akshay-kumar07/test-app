@@ -122,6 +122,29 @@ export const HeaderTitle = styled.span`
   vertical-align: middle;
 `;
 
+export const ClearCartButton = styled.button`
+  display: block;
+  width: calc(100% - 10%);
+  margin: 20px 5% 220px;
+  padding: 12px 0;
+  border: 1px solid #5b5a5e;
+  border-radius: 4px;
+  background: none;
+  color: #ececec;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:focus-visible {
+    outline: 3px solid ${({ theme }) => theme.colors.secondary};
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+`;
+
 export const Sub = styled.p`
   width: 20%;
   color: #5b5a5e;

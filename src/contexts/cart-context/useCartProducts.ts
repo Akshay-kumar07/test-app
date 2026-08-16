@@ -66,12 +66,20 @@ const useCartProducts = () => {
     updateCartTotal(updatedProducts);
   };
 
+  const clearCart = () => {
+    const updatedProducts: ICartProduct[] = [];
+
+    setProducts(updatedProducts);
+    updateCartTotal(updatedProducts);
+  };
+
   return {
     products,
     addProduct,
     removeProduct,
     increaseProductQuantity,
     decreaseProductQuantity,
+    clearCart,
   };
 };
 
