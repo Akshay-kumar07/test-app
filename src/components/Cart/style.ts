@@ -1,5 +1,7 @@
 import styled from 'styled-components/macro';
 
+export const CART_FOOTER_HEIGHT = 200;
+
 export const CartButton = styled.button`
   border: 0;
   padding: 0;
@@ -93,6 +95,8 @@ export const CartQuantity = styled.div`
 export const CartContent = styled.div`
   height: 100%;
   overflow-y: scroll;
+  box-sizing: border-box;
+  padding-bottom: ${CART_FOOTER_HEIGHT}px;
 
   /* MAC scrollbar para desktop*/
   @media screen and (min-width: 640px) {
@@ -120,12 +124,16 @@ export const HeaderTitle = styled.span`
   font-weight: bold;
   font-size: 1.2em;
   vertical-align: middle;
+
+  &:focus-visible {
+    outline: 3px solid ${({ theme }) => theme.colors.secondary};
+  }
 `;
 
 export const ClearCartButton = styled.button`
   display: block;
   width: calc(100% - 10%);
-  margin: 20px 5% 220px;
+  margin: 20px 5%;
   padding: 12px 0;
   border: 1px solid #5b5a5e;
   border-radius: 4px;
@@ -199,7 +207,7 @@ export const CartFooter = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 200px;
+  height: ${CART_FOOTER_HEIGHT}px;
   z-index: 2;
   background-color: ${({ theme }) => theme.colors.primary};
 
