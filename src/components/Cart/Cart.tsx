@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import formatPrice from 'utils/formatPrice';
 import CartProducts from './CartProducts';
 
@@ -6,7 +7,9 @@ import { useCart } from 'contexts/cart-context';
 import * as S from './style';
 
 const Cart = () => {
-  const { products, total, isOpen, openCart, closeCart } = useCart();
+  const { products, total, isOpen, openCart, closeCart, clearCart } =
+    useCart();
+  const headerTitleRef = useRef<HTMLSpanElement>(null);
 
   const handleCheckout = () => {
     if (total.productQuantity) {
@@ -23,6 +26,13 @@ const Cart = () => {
 
   const handleToggleCart = (isOpen: boolean) => () =>
     isOpen ? closeCart() : openCart();
+
+  const handleClearCart = () => {
+    if (window.confirm('Remove all items from your cart?')) {
+      clearCart();
+      headerTitleRef.current?.focus();
+    }
+  };
 
   return (
     <S.Container isOpen={isOpen}>
@@ -44,10 +54,18 @@ const Cart = () => {
             <S.CartIcon large>
               <S.CartQuantity>{total.productQuantity}</S.CartQuantity>
             </S.CartIcon>
-            <S.HeaderTitle>Cart</S.HeaderTitle>
+            <S.HeaderTitle ref={headerTitleRef} tabIndex={-1}>
+              Cart
+            </S.HeaderTitle>
           </S.CartContentHeader>
 
           <CartProducts products={products} />
+
+          {products.length > 0 && (
+            <S.ClearCartButton onClick={handleClearCart}>
+              Clear Cart
+            </S.ClearCartButton>
+          )}
 
           <S.CartFooter>
             <S.Sub>SUBTOTAL</S.Sub>
