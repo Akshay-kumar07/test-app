@@ -15,12 +15,14 @@ describe('[contexts] - products-context', () => {
     let isFetching: boolean;
     let products: ICartProduct[];
     let filters: string[];
+    let sort: string;
     const originalUseContext = React.useContext;
 
     const setupMockUseContext = (options: { [key: string]: any } = {}) => {
       isFetching = false;
       products = options.initialProducts || [];
       filters = options.initialFilters || [];
+      sort = options.initialSort || '';
 
       const mockSetIsFetching = jest.fn().mockImplementation((newState) => {
         isFetching = newState;
@@ -37,6 +39,10 @@ describe('[contexts] - products-context', () => {
         filters = activeFilters;
         return filters;
       });
+      const mockSetSort = jest.fn().mockImplementation((newSort) => {
+        sort = newSort;
+        return sort;
+      });
 
       const mockUseContext = jest.fn().mockImplementation(() => ({
         isFetching: false,
@@ -45,6 +51,8 @@ describe('[contexts] - products-context', () => {
         setProducts: mockSetProducts,
         filters: options.initialFilters,
         setFilters: mockSetFilters,
+        sort: options.initialSort || '',
+        setSort: mockSetSort,
       }));
       React.useContext = mockUseContext;
     };
@@ -80,6 +88,45 @@ describe('[contexts] - products-context', () => {
             title: 'Black Tule Oversized',
           },
         ]);
+      });
+    });
+
+    describe('sortProducts', () => {
+      afterEach(() => {
+        resetMocks();
+      });
+
+      test('should sort products by price, low to high', async () => {
+        setupMockUseContext({ initialProducts: mockProducts });
+
+        const { result } = renderHook(() => useProducts(), { wrapper });
+
+        await result.current.sortProducts('price-asc');
+        const prices = products.map((p) => p.price);
+        expect(prices).toEqual([...prices].sort((a, b) => a - b));
+      });
+
+      test('should sort products by price, high to low', async () => {
+        setupMockUseContext({ initialProducts: mockProducts });
+
+        const { result } = renderHook(() => useProducts(), { wrapper });
+
+        await result.current.sortProducts('price-desc');
+        const prices = products.map((p) => p.price);
+        expect(prices).toEqual([...prices].sort((a, b) => b - a));
+      });
+
+      test('should keep existing filters applied when sorting', async () => {
+        setupMockUseContext({
+          initialProducts: mockProducts,
+          initialFilters: ['M'],
+        });
+
+        const { result } = renderHook(() => useProducts(), { wrapper });
+
+        await result.current.sortProducts('price-desc');
+        expect(products).toHaveLength(1);
+        expect(products[0].availableSizes).toContain('M');
       });
     });
   });

@@ -79,3 +79,12 @@ export const Title = styled.h4`
   margin-top: 2px;
   margin-bottom: 20px;
 `;
+
+export const Select = styled.select`
+  display: block;
+  width: 100%;
+  padding: 8px;
+  font-size: 0.9em;
+  border-radius: 4px;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+`;
