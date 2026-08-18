@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { useProductsContext, SortOrder } from './ProductsContextProvider';
 import { IProduct } from 'models';
@@ -32,8 +32,8 @@ const useProducts = () => {
   const {
     isFetching,
     setIsFetching,
-    products,
-    setProducts,
+    rawProducts,
+    setRawProducts,
     filters,
     setFilters,
     sort,
@@ -44,38 +44,21 @@ const useProducts = () => {
     setIsFetching(true);
     getProducts().then((products: IProduct[]) => {
       setIsFetching(false);
-      setProducts(products);
+      setRawProducts(products);
     });
-  }, [setIsFetching, setProducts]);
+  }, [setIsFetching, setRawProducts]);
+
+  const products = useMemo(
+    () => sortByOrder(filterByFilters(rawProducts, filters), sort),
+    [rawProducts, filters, sort]
+  );
 
   const filterProducts = (filters: string[]) => {
-    setIsFetching(true);
-
-    getProducts().then((products: IProduct[]) => {
-      setIsFetching(false);
-      const filteredProducts = sortByOrder(
-        filterByFilters(products, filters),
-        sort
-      );
-
-      setFilters(filters);
-      setProducts(filteredProducts);
-    });
+    setFilters(filters);
   };
 
   const sortProducts = (sort: SortOrder) => {
-    setIsFetching(true);
-
-    getProducts().then((products: IProduct[]) => {
-      setIsFetching(false);
-      const sortedProducts = sortByOrder(
-        filterByFilters(products, filters),
-        sort
-      );
-
-      setSort(sort);
-      setProducts(sortedProducts);
-    });
+    setSort(sort);
   };
 
   return {
