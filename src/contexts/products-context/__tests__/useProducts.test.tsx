@@ -1,10 +1,8 @@
-import { renderHook } from '@testing-library/react-hooks';
-import { ICartProduct } from 'models';
-import React, { ReactNode } from 'react';
+import { renderHook, act } from '@testing-library/react-hooks';
+import { ReactNode } from 'react';
 import { ProductsProvider } from '..';
 import useProducts from '../useProducts';
-
-import { mockProducts } from 'utils/test/mocks';
+import * as productsService from 'services/products';
 
 const wrapper = ({ children }: { children: ReactNode }) => (
   <ProductsProvider>{children}</ProductsProvider>
@@ -12,75 +10,109 @@ const wrapper = ({ children }: { children: ReactNode }) => (
 
 describe('[contexts] - products-context', () => {
   describe('useProducts', () => {
-    let isFetching: boolean;
-    let products: ICartProduct[];
-    let filters: string[];
-    const originalUseContext = React.useContext;
+    test('should filter products by size', async () => {
+      const { result } = renderHook(() => useProducts(), { wrapper });
 
-    const setupMockUseContext = (options: { [key: string]: any } = {}) => {
-      isFetching = false;
-      products = options.initialProducts || [];
-      filters = options.initialFilters || [];
-
-      const mockSetIsFetching = jest.fn().mockImplementation((newState) => {
-        isFetching = newState;
-        return isFetching;
+      await act(async () => {
+        result.current.fetchProducts();
       });
 
-      const mockSetProducts = jest
-        .fn()
-        .mockImplementation((fetchedProducts) => {
-          products = fetchedProducts;
-          return products;
-        });
-      const mockSetFilters = jest.fn().mockImplementation((activeFilters) => {
-        filters = activeFilters;
-        return filters;
+      act(() => {
+        result.current.filterProducts(['M']);
       });
 
-      const mockUseContext = jest.fn().mockImplementation(() => ({
-        isFetching: false,
-        setIsFetching: mockSetIsFetching,
-        products: options.initialProducts,
-        setProducts: mockSetProducts,
-        filters: options.initialFilters,
-        setFilters: mockSetFilters,
-      }));
-      React.useContext = mockUseContext;
-    };
+      expect(result.current.products).toHaveLength(1);
+      expect(result.current.products[0].availableSizes).toContain('M');
+    });
 
-    const resetMocks = () => {
-      React.useContext = originalUseContext;
-    };
+    test('should sort products by price, low to high', async () => {
+      const { result } = renderHook(() => useProducts(), { wrapper });
 
-    describe('fetchProducts', () => {
-      afterEach(() => {
-        resetMocks();
+      await act(async () => {
+        result.current.fetchProducts();
       });
 
-      test('should filter products', async () => {
-        setupMockUseContext({ initialProducts: mockProducts });
-
-        const { result } = renderHook(() => useProducts(), { wrapper });
-
-        expect(products).toEqual(mockProducts);
-        await result.current.filterProducts(['M']);
-        expect(products).toEqual([
-          {
-            availableSizes: ['M', 'ML'],
-            currencyFormat: '$',
-            currencyId: 'USD',
-            description: '',
-            id: 13,
-            installments: 5,
-            isFreeShipping: true,
-            price: 29.45,
-            sku: 51498472915966370,
-            style: 'Tule',
-            title: 'Black Tule Oversized',
-          },
-        ]);
+      act(() => {
+        result.current.sortProducts('price-asc');
       });
+
+      const prices = result.current.products.map((p) => p.price);
+      expect(prices).toEqual([...prices].sort((a, b) => a - b));
+    });
+
+    test('should sort products by price, high to low', async () => {
+      const { result } = renderHook(() => useProducts(), { wrapper });
+
+      await act(async () => {
+        result.current.fetchProducts();
+      });
+
+      act(() => {
+        result.current.sortProducts('price-desc');
+      });
+
+      const prices = result.current.products.map((p) => p.price);
+      expect(prices).toEqual([...prices].sort((a, b) => b - a));
+    });
+
+    test('should keep existing filters applied when sorting', async () => {
+      const { result } = renderHook(() => useProducts(), { wrapper });
+
+      await act(async () => {
+        result.current.fetchProducts();
+      });
+
+      act(() => {
+        result.current.filterProducts(['M']);
+      });
+      act(() => {
+        result.current.sortProducts('price-desc');
+      });
+
+      expect(result.current.products).toHaveLength(1);
+      expect(result.current.products[0].availableSizes).toContain('M');
+    });
+
+    test('should keep existing sort applied when filtering', async () => {
+      const { result } = renderHook(() => useProducts(), { wrapper });
+
+      await act(async () => {
+        result.current.fetchProducts();
+      });
+
+      act(() => {
+        result.current.sortProducts('price-asc');
+      });
+      act(() => {
+        result.current.filterProducts(['XL']);
+      });
+
+      const prices = result.current.products.map((p) => p.price);
+      expect(prices.length).toBeGreaterThan(0);
+      expect(prices).toEqual([...prices].sort((a, b) => a - b));
+    });
+
+    test('should not refetch products when filtering or sorting', async () => {
+      const getProductsSpy = jest.spyOn(productsService, 'getProducts');
+
+      const { result } = renderHook(() => useProducts(), { wrapper });
+
+      await act(async () => {
+        result.current.fetchProducts();
+      });
+
+      expect(getProductsSpy).toHaveBeenCalledTimes(1);
+
+      act(() => {
+        result.current.filterProducts(['M']);
+      });
+      act(() => {
+        result.current.sortProducts('price-asc');
+      });
+
+      expect(getProductsSpy).toHaveBeenCalledTimes(1);
+
+      getProductsSpy.mockRestore();
     });
   });
 });

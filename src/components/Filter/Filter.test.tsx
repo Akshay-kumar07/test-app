@@ -22,4 +22,16 @@ describe('[components] - Filter', () => {
     const { getByText } = setup();
     expect(availableSizes.every((size) => getByText(size))).toBe(true);
   });
+
+  test('should render both sort options', () => {
+    const { getByText } = setup();
+    expect(getByText('Price: High to Low')).toBeTruthy();
+    expect(getByText('Price: Low to High')).toBeTruthy();
+  });
+
+  test('should have no sort selected by default', () => {
+    const { getByRole } = setup();
+    const select = getByRole('combobox') as HTMLSelectElement;
+    expect(select.value).toBe('');
+  });
 });

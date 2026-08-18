@@ -2,13 +2,17 @@ import { createContext, useContext, FC, useState } from 'react';
 
 import { IProduct } from 'models';
 
+export type SortOrder = 'price-asc' | 'price-desc' | '';
+
 export interface IProductsContext {
   isFetching: boolean;
   setIsFetching(state: boolean): void;
-  products: IProduct[];
-  setProducts(products: IProduct[]): void;
+  rawProducts: IProduct[];
+  setRawProducts(products: IProduct[]): void;
   filters: string[];
   setFilters(filters: string[]): void;
+  sort: SortOrder;
+  setSort(sort: SortOrder): void;
 }
 
 const ProductsContext = createContext<IProductsContext | undefined>(undefined);
@@ -26,16 +30,19 @@ const useProductsContext = (): IProductsContext => {
 
 const ProductsProvider: FC = (props) => {
   const [isFetching, setIsFetching] = useState(false);
-  const [products, setProducts] = useState<IProduct[]>([]);
+  const [rawProducts, setRawProducts] = useState<IProduct[]>([]);
   const [filters, setFilters] = useState<string[]>([]);
+  const [sort, setSort] = useState<SortOrder>('');
 
   const ProductContextValue: IProductsContext = {
     isFetching,
     setIsFetching,
-    products,
-    setProducts,
+    rawProducts,
+    setRawProducts,
     filters,
     setFilters,
+    sort,
+    setSort,
   };
 
   return <ProductsContext.Provider value={ProductContextValue} {...props} />;

@@ -142,6 +142,30 @@ Object {
                   </span>
                 </label>
               </div>
+              <h4
+                class="Filter__Title-sc-bj2vay-2 cVDNWF"
+              >
+                Sort by price:
+              </h4>
+              <select
+                class="Filter__Select-sc-bj2vay-3 fgNZTw"
+              >
+                <option
+                  value=""
+                >
+                  None
+                </option>
+                <option
+                  value="price-desc"
+                >
+                  Price: High to Low
+                </option>
+                <option
+                  value="price-asc"
+                >
+                  Price: Low to High
+                </option>
+              </select>
             </div>
           </div>
           <main
@@ -319,6 +343,30 @@ Object {
                 </span>
               </label>
             </div>
+            <h4
+              class="Filter__Title-sc-bj2vay-2 cVDNWF"
+            >
+              Sort by price:
+            </h4>
+            <select
+              class="Filter__Select-sc-bj2vay-3 fgNZTw"
+            >
+              <option
+                value=""
+              >
+                None
+              </option>
+              <option
+                value="price-desc"
+              >
+                Price: High to Low
+              </option>
+              <option
+                value="price-asc"
+              >
+                Price: Low to High
+              </option>
+            </select>
           </div>
         </div>
         <main
