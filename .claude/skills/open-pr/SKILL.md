@@ -23,8 +23,7 @@ doesn't stall on either.
      thresholds in `package.json` (`jest.coverageThreshold`) are newly broken
      by this change, that's a real signal to add tests, not to lower the
      threshold again.
-   - `npm run build` — must complete with `Compiled successfully`, then
-     `rm -rf build` (build output isn't committed).
+   - `npm run build` — must complete with `Compiled successfully`.
 3. **Commit with a Conventional Commit message**: `<type>: <short summary>`,
    where `type` is one of `feat`, `fix`, `chore`, `docs`, `refactor`, `test`,
    `ci` — match the type to what actually changed. A bare subject-less

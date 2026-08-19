@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-A React + TypeScript shopping cart demo app: product listing with size filters, floating cart with add/remove, instant total calculation. State is managed with React Context (no Redux), styled with styled-components. Built on Create React App (`react-scripts`).
+A React + TypeScript shopping cart demo app: product listing with size filters and price sorting, floating cart with add/remove, instant total calculation. State is managed with React Context (no Redux), styled with styled-components. Built on Create React App (`react-scripts`).
 
 ## Commands
 
@@ -14,7 +14,7 @@ npm start            # dev server
 npm run build        # production build
 npm test             # run all tests (react-scripts test --silent, watch mode by default)
 npm run test:watch   # explicit watch mode
-npm run test:coverage # run once with coverage report (--watchAll false semantics via CI flag not set, forces watchAll)
+npm run test:coverage # coverage report; the script passes --watchAll, so it stays in watch mode — pass --watchAll=false to run once
 npm run lint         # eslint ./src
 npm run format       # prettier --write across ts/tsx/js/json/css
 ```
@@ -32,8 +32,8 @@ Snapshot tests live alongside components in `__snapshots__/` directories — upd
 
 **State management**: Two independent React Contexts, each following the same pattern — a context object, a `use*Context` hook that throws if used outside its provider, and a `*Provider` component:
 
-- `src/contexts/cart-context/` — cart open/closed state, cart products, cart total. Exposes derived hooks `useCart`, `useCartProducts`, `useCartTotal` (in addition to the raw `useCartContext`) — prefer these derived hooks over reaching into the raw context.
-- `src/contexts/products-context/` — product list, loading state, active size filters.
+- `src/contexts/cart-context/` — cart open/closed state, cart products, cart total. Only `CartProvider` and `useCart` are exported from the barrel (`index.ts`); `useCartProducts`, `useCartTotal`, and the raw `useCartContext` are internal pieces `useCart` composes internally, not part of the public API — import `useCart`, not those.
+- `src/contexts/products-context/` — product list, loading state, active size filters, and sort order (`useProducts`, exported alongside the `SortOrder` type).
 
 Both providers wrap the app in `src/components/App`. There is no global store beyond these two contexts.
 
