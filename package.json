@@ -2,7 +2,6 @@
   "name": "react-shopping-cart",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Akshay-kumar07.github.io/test-app",
   "engines": {
     "node": "14.17.3"
   },
