@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to AWS
 
 on:
   push:
@@ -6,15 +6,19 @@ on:
 
 permissions:
   contents: read
-  pages: write
   id-token: write
 
 concurrency:
-  group: pages
+  group: deploy
   cancel-in-progress: true
 
+env:
+  AWS_REGION: us-east-1
+  S3_BUCKET: claude-code-demo-app
+  CLOUDFRONT_DISTRIBUTION_ID: EJRV6ZWO3SKLC
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,16 +28,9 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
+      - uses: aws-actions/configure-aws-credentials@v4
         with:
-          path: build
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          role-to-assume: arn:aws:iam::850122838169:role/github-actions-deploy-claude-demo
+          aws-region: ${{ env.AWS_REGION }}
+      - run: aws s3 sync build/ s3://${{ env.S3_BUCKET }} --delete
+      - run: aws cloudfront create-invalidation --distribution-id ${{ env.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
