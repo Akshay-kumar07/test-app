@@ -6,11 +6,11 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="Product__Container-sc-124al1g-2 kgHzaj"
+        class="Product__Container-sc-124al1g-2 gDhjeQ"
         tabindex="1"
       >
         <div
-          class="Product__Stopper-sc-124al1g-3 iirFfh"
+          class="Product__Stopper-sc-124al1g-3 dWUstm"
         >
           Free shipping
         </div>
@@ -19,15 +19,15 @@ Object {
           class="Product__Image-sc-124al1g-1"
         />
         <p
-          class="Product__Title-sc-124al1g-4 iKNVRs"
+          class="Product__Title-sc-124al1g-4 emQDXj"
         >
           Cropped Stay Groovy off white
         </p>
         <div
-          class="Product__Price-sc-124al1g-5 iZlLwH"
+          class="Product__Price-sc-124al1g-5 eAvzjw"
         >
           <p
-            class="Product__Val-sc-124al1g-6 eKyHNu"
+            class="Product__Val-sc-124al1g-6 hPjDhN"
           >
             <small>
               $
@@ -40,7 +40,7 @@ Object {
             </span>
           </p>
           <p
-            class="Product__Installment-sc-124al1g-7 hBZpTG"
+            class="Product__Installment-sc-124al1g-7 ktmWMV"
           >
             <span>
               or 
@@ -54,7 +54,7 @@ Object {
           </p>
         </div>
         <button
-          class="Product__BuyButton-sc-124al1g-0 jCZDKU"
+          class="Product__BuyButton-sc-124al1g-0 bgfSSn"
           tabindex="-1"
         >
           Add to cart
@@ -64,11 +64,11 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="Product__Container-sc-124al1g-2 kgHzaj"
+      class="Product__Container-sc-124al1g-2 gDhjeQ"
       tabindex="1"
     >
       <div
-        class="Product__Stopper-sc-124al1g-3 iirFfh"
+        class="Product__Stopper-sc-124al1g-3 dWUstm"
       >
         Free shipping
       </div>
@@ -77,15 +77,15 @@ Object {
         class="Product__Image-sc-124al1g-1"
       />
       <p
-        class="Product__Title-sc-124al1g-4 iKNVRs"
+        class="Product__Title-sc-124al1g-4 emQDXj"
       >
         Cropped Stay Groovy off white
       </p>
       <div
-        class="Product__Price-sc-124al1g-5 iZlLwH"
+        class="Product__Price-sc-124al1g-5 eAvzjw"
       >
         <p
-          class="Product__Val-sc-124al1g-6 eKyHNu"
+          class="Product__Val-sc-124al1g-6 hPjDhN"
         >
           <small>
             $
@@ -98,7 +98,7 @@ Object {
           </span>
         </p>
         <p
-          class="Product__Installment-sc-124al1g-7 hBZpTG"
+          class="Product__Installment-sc-124al1g-7 ktmWMV"
         >
           <span>
             or 
@@ -112,7 +112,7 @@ Object {
         </p>
       </div>
       <button
-        class="Product__BuyButton-sc-124al1g-0 jCZDKU"
+        class="Product__BuyButton-sc-124al1g-0 bgfSSn"
         tabindex="-1"
       >
         Add to cart

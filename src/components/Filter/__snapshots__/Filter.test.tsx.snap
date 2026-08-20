@@ -9,12 +9,12 @@ Object {
         class="Filter__Container-sc-bj2vay-0"
       >
         <h4
-          class="Filter__Title-sc-bj2vay-2 cVDNWF"
+          class="Filter__Title-sc-bj2vay-2 gmZMUe"
         >
           Sizes:
         </h4>
         <div
-          class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+          class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
         >
           <label>
             <input
@@ -30,7 +30,7 @@ Object {
           </label>
         </div>
         <div
-          class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+          class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
         >
           <label>
             <input
@@ -46,7 +46,7 @@ Object {
           </label>
         </div>
         <div
-          class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+          class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
         >
           <label>
             <input
@@ -62,7 +62,7 @@ Object {
           </label>
         </div>
         <div
-          class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+          class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
         >
           <label>
             <input
@@ -78,7 +78,7 @@ Object {
           </label>
         </div>
         <div
-          class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+          class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
         >
           <label>
             <input
@@ -94,7 +94,7 @@ Object {
           </label>
         </div>
         <div
-          class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+          class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
         >
           <label>
             <input
@@ -110,7 +110,7 @@ Object {
           </label>
         </div>
         <div
-          class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+          class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
         >
           <label>
             <input
@@ -126,12 +126,12 @@ Object {
           </label>
         </div>
         <h4
-          class="Filter__Title-sc-bj2vay-2 cVDNWF"
+          class="Filter__Title-sc-bj2vay-2 gmZMUe"
         >
           Sort by price:
         </h4>
         <select
-          class="Filter__Select-sc-bj2vay-3 fgNZTw"
+          class="Filter__Select-sc-bj2vay-3 ckwuEH"
         >
           <option
             value=""
@@ -157,12 +157,12 @@ Object {
       class="Filter__Container-sc-bj2vay-0"
     >
       <h4
-        class="Filter__Title-sc-bj2vay-2 cVDNWF"
+        class="Filter__Title-sc-bj2vay-2 gmZMUe"
       >
         Sizes:
       </h4>
       <div
-        class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+        class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
       >
         <label>
           <input
@@ -178,7 +178,7 @@ Object {
         </label>
       </div>
       <div
-        class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+        class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
       >
         <label>
           <input
@@ -194,7 +194,7 @@ Object {
         </label>
       </div>
       <div
-        class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+        class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
       >
         <label>
           <input
@@ -210,7 +210,7 @@ Object {
         </label>
       </div>
       <div
-        class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+        class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
       >
         <label>
           <input
@@ -226,7 +226,7 @@ Object {
         </label>
       </div>
       <div
-        class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+        class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
       >
         <label>
           <input
@@ -242,7 +242,7 @@ Object {
         </label>
       </div>
       <div
-        class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+        class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
       >
         <label>
           <input
@@ -258,7 +258,7 @@ Object {
         </label>
       </div>
       <div
-        class="Filter__Checkbox-sc-bj2vay-1 cUzHAu"
+        class="Filter__Checkbox-sc-bj2vay-1 izYNeF"
       >
         <label>
           <input
@@ -274,12 +274,12 @@ Object {
         </label>
       </div>
       <h4
-        class="Filter__Title-sc-bj2vay-2 cVDNWF"
+        class="Filter__Title-sc-bj2vay-2 gmZMUe"
       >
         Sort by price:
       </h4>
       <select
-        class="Filter__Select-sc-bj2vay-3 fgNZTw"
+        class="Filter__Select-sc-bj2vay-3 ckwuEH"
       >
         <option
           value=""

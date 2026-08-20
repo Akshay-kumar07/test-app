@@ -6,27 +6,27 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="CartProduct__Container-sc-11uohgb-0 iFEDVZ"
+        class="CartProduct__Container-sc-11uohgb-0 fJfmzi"
       >
         <button
-          class="CartProduct__DeleteButton-sc-11uohgb-5 fZpMUH"
+          class="CartProduct__DeleteButton-sc-11uohgb-5 jEDzVU"
           title="remove product from cart"
         />
         <img
           alt="Cropped Stay Groovy off white"
-          class="CartProduct__Image-sc-11uohgb-7 dSflEM"
+          class="CartProduct__Image-sc-11uohgb-7 eUjxOT"
           src="8552515751438644-1-cart.webp"
         />
         <div
-          class="CartProduct__Details-sc-11uohgb-1 dWfwVY"
+          class="CartProduct__Details-sc-11uohgb-1 iolZxX"
         >
           <p
-            class="CartProduct__Title-sc-11uohgb-2 jVsMjn"
+            class="CartProduct__Title-sc-11uohgb-2 lkGRus"
           >
             Cropped Stay Groovy off white
           </p>
           <p
-            class="CartProduct__Desc-sc-11uohgb-3 bRgwLG"
+            class="CartProduct__Desc-sc-11uohgb-3 gEKgsV"
           >
             S | White T-shirt
              
@@ -36,20 +36,20 @@ Object {
           </p>
         </div>
         <div
-          class="CartProduct__Price-sc-11uohgb-4 NDRzT"
+          class="CartProduct__Price-sc-11uohgb-4 cFxNDU"
         >
           <p>
             $  10.90
           </p>
           <div>
             <button
-              class="CartProduct__ChangeQuantity-sc-11uohgb-6 JoGgi"
+              class="CartProduct__ChangeQuantity-sc-11uohgb-6 kRzmCd"
               disabled=""
             >
               -
             </button>
             <button
-              class="CartProduct__ChangeQuantity-sc-11uohgb-6 JoGgi"
+              class="CartProduct__ChangeQuantity-sc-11uohgb-6 kRzmCd"
             >
               +
             </button>
@@ -60,27 +60,27 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="CartProduct__Container-sc-11uohgb-0 iFEDVZ"
+      class="CartProduct__Container-sc-11uohgb-0 fJfmzi"
     >
       <button
-        class="CartProduct__DeleteButton-sc-11uohgb-5 fZpMUH"
+        class="CartProduct__DeleteButton-sc-11uohgb-5 jEDzVU"
         title="remove product from cart"
       />
       <img
         alt="Cropped Stay Groovy off white"
-        class="CartProduct__Image-sc-11uohgb-7 dSflEM"
+        class="CartProduct__Image-sc-11uohgb-7 eUjxOT"
         src="8552515751438644-1-cart.webp"
       />
       <div
-        class="CartProduct__Details-sc-11uohgb-1 dWfwVY"
+        class="CartProduct__Details-sc-11uohgb-1 iolZxX"
       >
         <p
-          class="CartProduct__Title-sc-11uohgb-2 jVsMjn"
+          class="CartProduct__Title-sc-11uohgb-2 lkGRus"
         >
           Cropped Stay Groovy off white
         </p>
         <p
-          class="CartProduct__Desc-sc-11uohgb-3 bRgwLG"
+          class="CartProduct__Desc-sc-11uohgb-3 gEKgsV"
         >
           S | White T-shirt
            
@@ -90,20 +90,20 @@ Object {
         </p>
       </div>
       <div
-        class="CartProduct__Price-sc-11uohgb-4 NDRzT"
+        class="CartProduct__Price-sc-11uohgb-4 cFxNDU"
       >
         <p>
           $  10.90
         </p>
         <div>
           <button
-            class="CartProduct__ChangeQuantity-sc-11uohgb-6 JoGgi"
+            class="CartProduct__ChangeQuantity-sc-11uohgb-6 kRzmCd"
             disabled=""
           >
             -
           </button>
           <button
-            class="CartProduct__ChangeQuantity-sc-11uohgb-6 JoGgi"
+            class="CartProduct__ChangeQuantity-sc-11uohgb-6 kRzmCd"
           >
             +
           </button>

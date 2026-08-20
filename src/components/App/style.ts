@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+`;
 
 export const TwoColumnGrid = styled.main`
   display: grid;
