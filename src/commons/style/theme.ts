@@ -7,6 +7,7 @@ const colors = {
   primary: '#1b1a20',
   secondary: '#eabf00',
   lightGrey: '#f5f5f5',
+  white: '#ffffff',
 };
 
 const breakpoints = {
